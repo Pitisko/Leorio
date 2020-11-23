@@ -33,6 +33,10 @@ module.exports = {
         let joindate = moment.utc(member.joinedAt).format("dddd, MMMM Do YYYY, HH:mm:ss"); 
         let status = user.presence.status;
         let avatar = user.avatarURL({size: 2048});
+        let bot = message.author.bot;
+        if(!bot) bot = "<:9830_no:748426943766069308>"
+        if(bot) bot = "<:9358_yes_tick:748426928347938897>"
+ 
         
         const roleColor = 
             message.guild.me.displayHexColor === "#000000"
@@ -50,6 +54,7 @@ module.exports = {
             .addField("`Joined Guild Date`", `${joindate} \n${joined} day(s) ago`, false)
             .addField("`Status`", status, false)
             .addField("`Game`", game(), true)
+            .addField("`Bot`", bot, false)
     
         message.channel.send(embed); 
   }
